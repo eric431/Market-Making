@@ -1,0 +1,19 @@
+# This compose yaml defines the structure for a trading engine 
+services:
+  FeedHanlder:
+    image: imageName ## Path to appropriate image 
+
+    ports:
+      -
+
+    networks:
+      - 
+      
+  AnalyticsEngine:
+    image:
+
+    ports:
+      -
+
+    networks:
+      -
