@@ -17,3 +17,16 @@ Once your linux environment is up and running, install the following software fr
 
 ### Network Port Configuration
 TBD
+
+
+### Docker Setup
+If you run the 'docker ps' command and the following error appears:
+  1.)  Got permission denied while trying to connect to the Docker daemon socket
+
+The solution is to run the following command:
+  1.) sudo chmod 666 /var/run/docker.sock
+
+  2.) containers/create: dial unix /var/run/docker.sock: connect: permission denied
+  
+The solution is to run the following command:
+  2.) sudo setfacl --modify user::rw /var/run/docker.sock
