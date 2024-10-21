@@ -1,4 +1,4 @@
-# Dockerfile for feed handler subsytem based on an ubuntu linux OS
+# Dockerfile for message queue subsytem based on an ubuntu linux OS
 
 FROM ubuntu:latest
 

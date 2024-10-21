@@ -9,6 +9,7 @@ services:
     networks:
       - 
       
+      
   AnalyticsEngine:
     image:
 
@@ -18,5 +19,22 @@ services:
     networks:
       -
 
+
   OrderBookGUI:
     image: ## fill the field with appropriate image name 
+
+    ports:
+      -
+
+    networks:
+      -
+
+
+  MessageQueue:
+    image: ## fill the field with appropriate image name 
+
+    ports:
+      -
+
+    networks:
+      -
