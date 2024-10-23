@@ -7,3 +7,4 @@ RUN apt-get update && apt-get install -y \
     openssh \
     g++ \
     cmake \
+    libboost-all-dev \

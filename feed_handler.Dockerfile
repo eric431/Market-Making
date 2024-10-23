@@ -8,3 +8,4 @@ RUN apt-get update && apt-get install -y \
     g++ \
     cmake \
     net-tools \
+    libboost-all-dev \
