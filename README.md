@@ -30,3 +30,7 @@ The solution is to run the following command:
   
 The solution is to run the following command:
   2.) sudo setfacl --modify user::rw /var/run/docker.sock
+
+
+### System Design
+![alt text](./LOBSystemDesign.png)
