@@ -15,12 +15,6 @@ add_executable(
 
 target_link_libraries(
     example_test
-    PRIVATE
-    GTest::Gtest
-    test
+    GTest::gtest
+    GTest::gtest_main
 )
-
-# add_test(test_example1)
-
-# include(GoogleTest)
-# gtest_discover_tests(example_test)
