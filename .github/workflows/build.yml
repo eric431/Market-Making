@@ -1,0 +1,16 @@
+name: Tests
+on: 
+    push:
+jobs:
+    build-tests:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out repository code
+              uses: actions/checkout@v4
+
+            - name: Run Tests
+              run: |
+               cd ${{github.workspace}}/test
+               cmake -S . -B build
+               cmake --build build
+               cd build && ctest
