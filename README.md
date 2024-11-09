@@ -34,3 +34,37 @@ The solution is to run the following command:
 
 ### System Design (Draft)
 ![alt text](./LOBSystemDesign.png)
+
+
+### CMake Guide
+
+# To Build 
+
+In the parent directory run :
+```
+cmake --build ./build/
+```
+This command will create executables in ./build/[SUB DIR]. To run executable :
+
+```
+./build/test/MainExec
+```
+or 
+```
+./build/test/example_test 
+```
+
+
+### KDB Ticker Plant Setup
+
+To run a KDB+ service in docker, the following files are required:
+
+- q.k (K (q) source code)
+- l64 (linux x64)
+  - q
+- kc.lic (kdb licence)
+
+
+# Linux Dependecies to run q 
+
+- rlwrap

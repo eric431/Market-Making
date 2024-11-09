@@ -12,7 +12,7 @@ ENV QHOME /kdb
 ENV PATH ${PATH}:${HOME}
 
 COPY ./kdb/ /kdb
-WORKDIR kdb
+WORKDIR /kdb
 CMD ["q", "example.q","-p","1234"]
 
 
