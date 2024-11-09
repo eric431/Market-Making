@@ -36,9 +36,9 @@ The solution is to run the following command:
 ![alt text](./LOBSystemDesign.png)
 
 
-### CMake Guide
+## CMake Guide
 
-# To Build 
+### To Build 
 
 In the parent directory run :
 ```
@@ -55,7 +55,7 @@ or
 ```
 
 
-### KDB Ticker Plant Setup
+## KDB Ticker Plant Setup
 
 To run a KDB+ service in docker, the following files are required:
 
@@ -65,6 +65,6 @@ To run a KDB+ service in docker, the following files are required:
 - kc.lic (kdb licence)
 
 
-# Linux Dependecies to run q 
+### Linux Dependecies to run q 
 
 - rlwrap
