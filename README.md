@@ -68,3 +68,17 @@ To run a KDB+ service in docker, the following files are required:
 ### Linux Dependecies to run q 
 
 - rlwrap
+
+### To Build and Run KDB Test Container
+
+Build Container:
+
+```
+docker build -t kdbtest/v3 --no-cache .
+```
+
+Run Container: This works in interactive mode
+
+```
+docker run -it --rm kdbtest/v3 /bin/bash 
+```
