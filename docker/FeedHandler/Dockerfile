@@ -8,4 +8,10 @@ RUN apt-get update && apt-get install -y \
     g++ \
     cmake \
     net-tools \
-    libboost-all-dev \
+    libboost-all-dev 
+
+COPY ./build/FeedHandler /FeedHandler
+
+WORKDIR /FeedHandler
+
+CMD ["FeedHandler"]

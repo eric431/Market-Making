@@ -13,6 +13,12 @@ add_executable(
     example_test.cpp
 )
 
+add_executable(
+
+    MainExec
+    main.cpp
+)
+
 target_link_libraries(
     example_test
     GTest::gtest
