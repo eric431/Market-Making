@@ -22,5 +22,3 @@ COPY ./../../kdb/ ${QHOME}
 EXPOSE 1234
 
 CMD ["q", "example.q","-p","1234"]
-
-

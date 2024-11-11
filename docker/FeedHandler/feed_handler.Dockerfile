@@ -10,8 +10,11 @@ RUN apt-get update && apt-get install -y \
     net-tools \
     libboost-all-dev 
 
-COPY ./build/FeedHandler /FeedHandler
+RUN mkdir ~/Coinbase_API && cd ~/Coinbase_API
 
-WORKDIR /FeedHandler
+COPY ../../Coinbase_API/priv_key.txt .
+COPY ../../Coinbase_API/pub_key.txt .
+    
+# COPY ./build/FeedHandler /FeedHandler
 
-CMD ["FeedHandler"]
+# WORKDIR /FeedHandler
