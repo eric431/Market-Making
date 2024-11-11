@@ -8,6 +8,11 @@ jobs:
             - name: Check out repository code
               uses: actions/checkout@v4
 
+            - name: Install googletest
+              uses: Bacondish2023/setup-googletest@v1
+              with:
+                tag: v1.14.0
+
             - name: Run Tests
               run: |
                cd ${{github.workspace}}/test
