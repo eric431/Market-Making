@@ -9,7 +9,7 @@ jobs:
               uses: actions/checkout@v4
 
             - name: Install googletest
-              uses: Bacondish2023/setup-googletest@v1
+              uses: Bacondish2023/setup-googletest@v1 # needs to be refactored/updated as time goes on
               with:
                 tag: v1.14.0
 
