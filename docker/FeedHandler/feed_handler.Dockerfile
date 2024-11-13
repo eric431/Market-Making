@@ -8,12 +8,15 @@ RUN apt-get update && apt-get install -y \
     g++ \
     cmake \
     net-tools \
-    libboost-all-dev 
+    libboost-all-dev \
+    curl \
+    libssl-dev \
+    libcurl4-openssl-dev
 
 RUN mkdir ~/Coinbase_API && cd ~/Coinbase_API
 
-COPY ../../Coinbase_API/priv_key.txt .
-COPY ../../Coinbase_API/pub_key.txt .
+COPY ../../API/priv_key.txt .
+COPY ../../API/pub_key.txt .
     
 # COPY ./build/FeedHandler /FeedHandler
 
