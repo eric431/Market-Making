@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
     g++ \
     cmake \
     net-tools \
-    libboost-all-dev \
+    libboost1.83-all-dev \
     curl \
     libssl-dev \
     libcurl4-openssl-dev
