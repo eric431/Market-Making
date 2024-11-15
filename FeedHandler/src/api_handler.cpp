@@ -1,9 +1,11 @@
-#include <iostream>
-#include <curl/curl.h>
-#include <boost/asio.hpp>
-#include <exception>
+#include "api_handler.hpp"
 
-int main()
+ApiHandler::ApiHandler()
 {
-    std::cout << "This script handles the coinbase API" << std::endl;
+
+}
+
+ApiHandler::~ApiHandler()
+{
+
 }
