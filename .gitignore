@@ -6,3 +6,4 @@ build/
 API/
 # directory where local tests and changes that are neither unit tests nor system tests are added
 */local_tests/ 
+*settings*
