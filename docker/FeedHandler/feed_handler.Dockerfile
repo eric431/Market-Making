@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y \
     libboost1.83-all-dev \
     curl \
     libssl-dev \
-    libcurl4-openssl-dev
+    libcurl4-openssl-dev \
+    nlohmann-json3-dev
 
 RUN mkdir ~/Coinbase_API && cd ~/Coinbase_API
 

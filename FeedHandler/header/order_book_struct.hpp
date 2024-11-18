@@ -58,4 +58,9 @@ struct Fix
 
 };
 
+namespace L3Schema
+{
+
+};
+
 #endif
