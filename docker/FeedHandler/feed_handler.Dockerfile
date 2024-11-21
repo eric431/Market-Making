@@ -16,9 +16,13 @@ RUN apt-get update && apt-get install -y \
 
 RUN mkdir ~/Coinbase_API && cd ~/Coinbase_API
 
-COPY ../../API/priv_key.txt .
+COPY ../../API/secret_key.txt .
 COPY ../../API/pub_key.txt .
     
+RUN echo "export API_KEY=$(cat ./pub_key.txt)" | cat >> ~/.bashrc
+RUN echo "export SECRET_KEY=$(cat ./secret_key.txt)" | cat >> ~/.bashrc
+RUN source ~/.bashrc
+
 # COPY ./build/FeedHandler /FeedHandler
 
 # WORKDIR /FeedHandler
