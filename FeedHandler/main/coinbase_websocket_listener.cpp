@@ -12,7 +12,8 @@
 #include <vector>
 
 namespace beast = boost::beast;
-namespace webssocket = beast::websocket;
+namespace websocket = beast::websocket;
+namespace net = boost::asio;
 using tcp = boost::asio::ip::tcp;
 
 static const std::string URI = "wss://ws-direct.sandbox.exchange.coinbase.com";
@@ -26,27 +27,45 @@ namespace Coinbase
     {
         try
         {
+            std::string host = "";
+            std::string port = "";
+            std::string text = "";
+
             net::io_context ioc;
 
             tcp::resolver resolver(ioc);
             websocket::stream<tcp::socket> ws{ioc};
+
+            auto const results = resolver.resolve(host, port);
 
             auto ep = net::connect(ws.next_layer(), results);
 
             host += ':' + std::to_string(ep.port());
 
 
-            ws.set_option(websocket::stream_base::decorator(
-                [](websocket::request_type& req)
-                {
-                    req.set(/* fill in with appropriate lambda function*/)
-                }
-            ));
-        }
-        catch
-        {
+            // ws.set_option(websocket::stream_base::decorator(
+            //     [](websocket::request_type& req)
+            //     {
+            //         req.set(/* fill in with appropriate lambda function*/);
+            //     }
+            // ));
 
+            ws.handshake(host, "/");
+
+            ws.write(net::buffer(std::string(text)));
+
+            beast::flat_buffer buffer;
+
+            ws.read(buffer);
+
+            ws.close(websocket::close_code::normal);
+
+            std::cout << beast::make_printable(buffer.data()) << std::endl;
         }
+        catch(std::exception const& e)
+        {
+            std::cerr << "Error: " << e.what() << std::endl;
+        }   
     }
 };
 

@@ -2,7 +2,11 @@
 #define ORDER_BOOK_STRUCT_H
 
 #include <string>
+#include <string_view>
 #include <vector>
+#include <nlohmann/json.hpp>
+
+using json = nlohmann::json;
 
 namespace MarketData
 {
@@ -133,6 +137,10 @@ namespace CoinbaseRequest
         std::vector<std::string> product_ids{};
         std::vector<Channel> channel{};
     };
+
+    void ToJson(CoinbaseRequest::Channel message, json output_json);
+
+    void FromJson(json message_j);
 }
 
 #endif

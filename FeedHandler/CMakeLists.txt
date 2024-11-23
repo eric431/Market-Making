@@ -14,5 +14,10 @@ target_include_directories(feed_handler_library PUBLIC header)
 add_executable(api_handler main/api_handler_main.cpp)
 target_link_libraries(api_handler PUBLIC feed_handler_library)
 
+add_library(orderbook_struct_library STATIC src/order_book_struct.cpp header/order_book_struct.hpp)
+target_include_directories(orderbook_struct_library PUBLIC header)
+target_link_libraries(orderbook_struct_library PRIVATE nlohmann_json::nlohmann_json)
+
 add_executable(listener main/coinbase_websocket_listener.cpp) # add order book struct header later
 target_link_libraries(listener PRIVATE nlohmann_json::nlohmann_json)
+target_link_libraries(listener PUBLIC orderbook_struct_library)
