@@ -6,10 +6,6 @@
 #include <ctime>
 #include <iostream>
 #include "order_book_struct.hpp"
-#include <nlohmann/json.hpp>
-#include <string>
-#include <string_view>
-#include <vector>
 
 namespace beast = boost::beast;
 namespace websocket = beast::websocket;
@@ -17,18 +13,23 @@ namespace net = boost::asio;
 using tcp = boost::asio::ip::tcp;
 
 static const std::string URI = "wss://ws-direct.sandbox.exchange.coinbase.com";
+static const std::string URI_2 = "wss://advanced-trade-ws.coinbase.com";
+
 const char* API_KEY = std::getenv("API_KEY");
 const char* SECRET_KEY = std::getenv("SECRET_KEY");
 
 namespace Coinbase
 {
     // synchonous websocket listener
-    void websocket_listener(std::string& host)
+    void websocket_listener(std::string_view URI_)
     {
         try
         {
-            std::string host = "";
-            std::string port = "";
+            // std::string host = "coinbase.com";
+            std::string host = "advanced-trade-ws.coinbase.com";
+
+            auto const port = "";
+
             std::string text = "";
 
             net::io_context ioc;
@@ -38,10 +39,14 @@ namespace Coinbase
 
             auto const results = resolver.resolve(host, port);
 
+            for(auto& el : results)
+            {
+                std::cout << el.host_name() << std::endl;
+            }
+
             auto ep = net::connect(ws.next_layer(), results);
 
             host += ':' + std::to_string(ep.port());
-
 
             // ws.set_option(websocket::stream_base::decorator(
             //     [](websocket::request_type& req)
@@ -64,14 +69,12 @@ namespace Coinbase
         }
         catch(std::exception const& e)
         {
-            std::cerr << "Error: " << e.what() << std::endl;
+            std::cerr << e.what() << std::endl;
         }   
     }
 };
 
 int main()
 {
-    std::cout << "compiled successfully" << std::endl;
-    std::cout << "API_KEY is " << API_KEY << std::endl;
-    std::cout << "SECRET_KEY is " << SECRET_KEY << std::endl;
+    Coinbase::websocket_listener(URI_2);
 }
