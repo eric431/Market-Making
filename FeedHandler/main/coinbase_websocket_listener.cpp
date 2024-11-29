@@ -8,6 +8,7 @@
 #include "order_book_struct.hpp"
 
 namespace beast = boost::beast;
+namespace http = beast::http;
 namespace websocket = beast::websocket;
 namespace net = boost::asio;
 using tcp = boost::asio::ip::tcp;
@@ -25,10 +26,9 @@ namespace Coinbase
     {
         try
         {
-            // std::string host = "coinbase.com";
             std::string host = "advanced-trade-ws.coinbase.com";
 
-            auto const port = "";
+            auto const port = "443";
 
             std::string text = "";
 
@@ -39,23 +39,22 @@ namespace Coinbase
 
             auto const results = resolver.resolve(host, port);
 
-            for(auto& el : results)
-            {
-                std::cout << el.host_name() << std::endl;
-            }
-
             auto ep = net::connect(ws.next_layer(), results);
 
             host += ':' + std::to_string(ep.port());
 
-            // ws.set_option(websocket::stream_base::decorator(
-            //     [](websocket::request_type& req)
-            //     {
-            //         req.set(/* fill in with appropriate lambda function*/);
-            //     }
-            // ));
+            ws.set_option(websocket::stream_base::decorator(
+                [](websocket::request_type& req)
+                {
+                    req.set(http::field::user_agent,
+                        std::string(BOOST_BEAST_VERSION_STRING) +
+                            " websocket-client-coro");
+                }
+            ));
 
             ws.handshake(host, "/");
+
+            // std::cout << 57 << std::endl;
 
             ws.write(net::buffer(std::string(text)));
 
