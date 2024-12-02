@@ -1,5 +1,5 @@
-#ifndef ORDER_BOOK_STRUCT_H
-#define ORDER_BOOK_STRUCT_H
+#ifndef TRADING_MESSAGES_H
+#define TRADING_MESSAGES_H
 
 #include <string>
 #include <string_view>
