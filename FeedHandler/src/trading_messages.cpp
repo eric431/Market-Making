@@ -1,4 +1,4 @@
-#include "order_book_struct.hpp"
+#include "trading_messages.hpp"
 
 void CoinbaseRequest::ToJson(CoinbaseRequest::Channel message, json output_json)
 {
