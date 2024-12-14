@@ -1,3 +1,9 @@
 */build/
+build/
 */Testing/
 */.vscode/
+# directory where coinbase API keys are stored to prevent github having and potentially hackers gaining access to keys that will be copied to the docker container
+API/
+# directory where local tests and changes that are neither unit tests nor system tests are added
+*/local_tests/ 
+*settings*
