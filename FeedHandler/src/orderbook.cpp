@@ -20,4 +20,10 @@ void OrderBook::AddAskOrder(){}
 
 BidAsk OrderBook::GetBestBidAsk(){}
 
+void OrderBook::ModifyOrder(){}
+
+void OrderBook::CancelOrder(){}
+
+std::string_view OrderBook::PrintOrderBook(){};
+
 void OrderBook::SetSymbol(std::string symbol){}

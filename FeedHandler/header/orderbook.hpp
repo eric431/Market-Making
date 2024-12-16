@@ -6,11 +6,14 @@
 #include <string>
 #include <string_view>
 
-using Price   = double;
-using Qty     = double;
-using Book    = std::map<Price, Order>;
-using BookPtr = std::shared_ptr<Book>;
-using BidAsk  = std::pair<Order, Order>;
+using Price           = double;
+using Qty             = double;
+using BuySideBook     = std::map<Price, MarketOrder>;
+using SellSideBook    = std::map<Price, MarketOrder>;
+using BuySideBookPtr  = std::shared_ptr<BuySideBook>;
+using SellSideBookPtr = std::shared_ptr<SellSideBook>;
+using BidAsk          = std::pair<MarketOrder, MarketOrder>;
+using OrderId         = unsigned long;
 
 enum OrderType
 {
@@ -19,11 +22,27 @@ enum OrderType
     Sell,
 };
 
-struct Order
+struct MarketOrder
 {
     OrderType order_type = OrderType::Null; 
     Price order_price{};
     Qty   order_quantity{};
+};
+
+struct LimitOrder
+{
+
+};
+
+struct StopOrder
+{
+
+};
+
+struct Book
+{
+    BuySideBookPtr BuySide{};
+    SellSideBookPtr SellSide{};
 };
 
 class OrderBook
@@ -53,12 +72,18 @@ class OrderBook
         // TODO: find appropriate return type for Bid Ask Spread
         // void GetBidAskSpread();
 
+        void ModifyOrder();
+
+        void CancelOrder();
+
+        std::string_view PrintOrderBook();
+
         // Determine if input argument can be a string_view instead
         void SetSymbol(std::string symbol);
 
     private:
         std::string m_symbol{};
-        BookPtr m_order_book{};
+        Book m_order_book{};
 };
 
 #endif
